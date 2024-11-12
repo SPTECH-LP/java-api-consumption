@@ -22,26 +22,26 @@ public class Main {
             System.out.println(character);
 
             // Requisição POST
-            Personage newCharacter = new Personage("Rick", "Alive", "Human", "Scientist");
-            // Transforma objeto do java em JSON
-            String json = mapper.writeValueAsString(newCharacter);
-
-            HttpRequest postRequest = HttpRequest.newBuilder().uri(URI.create("https://rickandmortyapi.com/api/character")).POST(HttpRequest.BodyPublishers.ofString(json)).build();
-            HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
-            System.out.println(postResponse.statusCode());
-
-            // Requisição DELETE
-            HttpRequest deleteRequest = HttpRequest.newBuilder().uri(URI.create("https://rickandmortyapi.com/api/character/1")).DELETE().build();
-            HttpResponse<String> deleteResponse = client.send(deleteRequest, HttpResponse.BodyHandlers.ofString());
-            System.out.println(deleteResponse.statusCode());
-
-
-            // Requisição PUT
-            Personage updatedCharacter = new Personage("Rick", "Alive", "Human", "Scientist");
-            String jsonUpdate = mapper.writeValueAsString(updatedCharacter);
-            HttpRequest putRequest = HttpRequest.newBuilder().uri(URI.create("https://rickandmortyapi.com/api/character/1")).PUT(HttpRequest.BodyPublishers.ofString(jsonUpdate)).build();
-            HttpResponse<String> putResponse = client.send(putRequest, HttpResponse.BodyHandlers.ofString());
-            System.out.println(putResponse.statusCode());
+//            Personage newCharacter = new Personage("Rick", "Alive", "Human", "Scientist");
+//            // Transforma objeto do java em JSON
+//            String json = mapper.writeValueAsString(newCharacter);
+//
+//            HttpRequest postRequest = HttpRequest.newBuilder().uri(URI.create("https://rickandmortyapi.com/api/character")).POST(HttpRequest.BodyPublishers.ofString(json)).build();
+//            HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+//            System.out.println(postResponse.statusCode());
+//
+//            // Requisição DELETE
+//            HttpRequest deleteRequest = HttpRequest.newBuilder().uri(URI.create("https://rickandmortyapi.com/api/character/1")).DELETE().build();
+//            HttpResponse<String> deleteResponse = client.send(deleteRequest, HttpResponse.BodyHandlers.ofString());
+//            System.out.println(deleteResponse.statusCode());
+//
+//
+//            // Requisição PUT
+//            Personage updatedCharacter = new Personage("Rick", "Alive", "Human", "Scientist");
+//            String jsonUpdate = mapper.writeValueAsString(updatedCharacter);
+//            HttpRequest putRequest = HttpRequest.newBuilder().uri(URI.create("https://rickandmortyapi.com/api/character/1")).PUT(HttpRequest.BodyPublishers.ofString(jsonUpdate)).build();
+//            HttpResponse<String> putResponse = client.send(putRequest, HttpResponse.BodyHandlers.ofString());
+//            System.out.println(putResponse.statusCode());
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

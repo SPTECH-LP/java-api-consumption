@@ -25,6 +25,8 @@ No código, importamos:
 ### 3. Criando a Classe `Personage`
 Para representar os dados dos personagens da API, criamos uma classe `Personage` com os atributos correspondentes. Esta classe precisa ser compatível com o JSON que a API retorna.
 
+* Nota: Sempre deixe um construtor vazio e os getters e setters para que o Jackson consiga desserializar o JSON corretamente.
+
 ```java
 package school.sptech.dto;
 
@@ -45,7 +47,6 @@ public class Personage {
     // Construtor, getters e setters...
 }
 ```
-
 
 A classe personage foi construidar dessa forma porque ela deve ser um representação do JSON que a gente vai receber, no nosso caso, iremos receber um JSON com os seguintes atributos:
 ```json

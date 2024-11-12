@@ -23,6 +23,9 @@ public class Personage {
         this.type = scientist;
     }
 
+    // Construtor vazio - necessário para o Jackson
+    public Personage() {
+    }
 
     public int getId() {
         return id;
