@@ -48,7 +48,7 @@ public class Personage {
 }
 ```
 
-A classe personage foi construidar dessa forma porque ela deve ser um representação do JSON que a gente vai receber, no nosso caso, iremos receber um JSON com os seguintes atributos:
+A classe personage foi construida dessa forma porque ela deve ser uma representação do JSON que você irá receber, no nosso caso, iremos receber um JSON com os seguintes atributos:
 ```json
 {
   "id": 1,
@@ -76,8 +76,11 @@ A classe personage foi construidar dessa forma porque ela deve ser um representa
 Perceba que os atributos `origin` e `location` são objetos JSON aninhados. Para representá-los, criamos as classes `Origin` e `Location`:
 
 
-### 4. Estrutura da Classe `Main`
-A classe `Main` realiza as seguintes operações HTTP: `GET`, `POST`, `DELETE` e `PUT`. Cada uma será explicada abaixo:
+### 4. Classes de exemplo 
+Foram criadas classes de exemplo para realizar as operações HTTP: `GET`, `POST`, `DELETE` e `PUT`. Cada uma será explicada abaixo:
+
+**Observação**: Com a API que estamos usando, só é possível realizar a operação de `GET`, de qualquer forma, foram deixados exemplos de `POST`, `DELETE` e `PUT` para que você possa entender como realizar essas operações.
+
 
 #### A) Requisição `GET`
 A requisição `GET` é usada para buscar um personagem específico da API pelo seu ID. O JSON retornado é convertido para um objeto `Personage` usando Jackson.
