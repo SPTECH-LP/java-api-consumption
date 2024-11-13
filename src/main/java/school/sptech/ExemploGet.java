@@ -1,7 +1,7 @@
 package school.sptech;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import school.sptech.dto.Personage;
+import school.sptech.dto.CharacterDto;
 
 import java.io.IOException;
 import java.net.URI;
@@ -25,7 +25,7 @@ public class ExemploGet {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             //Serializa as informações do JSON em um objeto Java
-            Personage character = mapper.readValue(response.body(), Personage.class);
+            CharacterDto character = mapper.readValue(response.body(), CharacterDto.class);
 
             // Exibe o objeto
             System.out.println(character);

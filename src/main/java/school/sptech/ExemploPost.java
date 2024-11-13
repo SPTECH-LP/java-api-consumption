@@ -1,7 +1,7 @@
 package school.sptech;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import school.sptech.dto.Personage;
+import school.sptech.dto.CharacterDto;
 
 import java.io.IOException;
 import java.net.URI;
@@ -17,7 +17,7 @@ public class ExemploPost {
             ObjectMapper mapper = new ObjectMapper();
 
             // Cria um novo personagem
-            Personage newCharacter = new Personage("Rick", "Alive", "Human", "Scientist");
+            CharacterDto newCharacter = new CharacterDto("Rick", "Alive", "Human", "Scientist");
 
             // Transforma objeto do java em JSON
             String json = mapper.writeValueAsString(newCharacter);

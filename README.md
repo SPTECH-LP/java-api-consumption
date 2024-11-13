@@ -22,22 +22,22 @@ No código, importamos:
 - **HttpClient** e **HttpRequest** para realizar as requisições HTTP.
 - **ObjectMapper** da biblioteca Jackson para manipulação de JSON.
 
-### 3. Criando a Classe `Personage`
-Para representar os dados dos personagens da API, criamos uma classe `Personage` com os atributos correspondentes. Esta classe precisa ser compatível com o JSON que a API retorna.
+### 3. Criando a Classe `CharacterDto`
+Para representar os dados dos personagens da API, criamos uma classe `CharacterDto` com os atributos correspondentes. Esta classe precisa ser compatível com o JSON que a API retorna.
 
 * Nota: Sempre deixe um construtor vazio e os getters e setters para que o Jackson consiga desserializar o JSON corretamente.
 
 ```java
 package school.sptech.dto;
 
-public class Personage {
+public class CharacterDto {
     private Integer id;
     private String name;
     private String status;
     private String species;
     private String type;
     private String gender;
-    private Origin origin;
+    private OriginDto originDto;
     private Location location;
     private String image;
     private List<String> episode;
@@ -48,7 +48,7 @@ public class Personage {
 }
 ```
 
-A classe personage foi construida dessa forma porque ela deve ser uma representação do JSON que você irá receber, no nosso caso, iremos receber um JSON com os seguintes atributos:
+A classe CharacterDto foi construida dessa forma porque ela deve ser uma representação do JSON que você irá receber, no nosso caso, iremos receber um JSON com os seguintes atributos:
 ```json
 {
   "id": 1,
@@ -57,7 +57,7 @@ A classe personage foi construida dessa forma porque ela deve ser uma representa
   "species": "",
   "type": "",
   "gender":"",
-  "origin": {
+  "originDto": {
     "name": "",
     "url": ""
   },
@@ -73,7 +73,7 @@ A classe personage foi construida dessa forma porque ela deve ser uma representa
   
  ```
 
-Perceba que os atributos `origin` e `location` são objetos JSON aninhados. Para representá-los, criamos as classes `Origin` e `Location`:
+Perceba que os atributos `originDto` e `location` são objetos JSON aninhados. Para representá-los, criamos as classes `Origin` e `Location`:
 
 
 ### 4. Classes de exemplo 
@@ -83,7 +83,7 @@ Foram criadas classes de exemplo para realizar as operações HTTP: `GET`, `POST
 
 
 #### A) Requisição `GET`
-A requisição `GET` é usada para buscar um personagem específico da API pelo seu ID. O JSON retornado é convertido para um objeto `Personage` usando Jackson.
+A requisição `GET` é usada para buscar um personagem específico da API pelo seu ID. O JSON retornado é convertido para um objeto `CharacterDto` usando Jackson.
 
 ```java
 // Criação do cliente HTTP
@@ -97,7 +97,7 @@ HttpRequest request = HttpRequest.newBuilder()
 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
 // Serializa o JSON em um objeto Java
-Personage character = mapper.readValue(response.body(), Personage.class);
+CharacterDto character = mapper.readValue(response.body(), CharacterDto.class);
 System.out.println(character);
 ```
 
@@ -106,14 +106,14 @@ System.out.println(character);
 2. Criamos uma instância de `ObjectMapper` para a manipulação de JSON.
 3. Montamos a requisição `GET` para a URL do personagem.
 4. Enviamos a requisição e armazenamos a resposta em `response`.
-5. Usamos `mapper.readValue` para desserializar o JSON da resposta para o objeto `Personage`.
+5. Usamos `mapper.readValue` para desserializar o JSON da resposta para o objeto `CharacterDto`.
 
 #### B) Requisição `POST`
 A requisição `POST` é utilizada para enviar dados à API (aqui simulamos a criação de um novo personagem).
 
 ```java
-// Criação de um novo objeto Personage
-Personage newCharacter = new Personage("Rick", "Alive", "Human", "Scientist");
+// Criação de um novo objeto CharacterDto
+CharacterDto newCharacter = new CharacterDto("Rick", "Alive", "Human", "Scientist");
 String json = mapper.writeValueAsString(newCharacter);
 
 HttpRequest postRequest = HttpRequest.newBuilder()
@@ -125,7 +125,7 @@ System.out.println(postResponse.statusCode());
 ```
 
 **Explicação:**
-1. Criamos um novo objeto `Personage`.
+1. Criamos um novo objeto `CharacterDto`.
 2. Serializamos esse objeto para JSON usando `mapper.writeValueAsString`.
 3. Construímos e enviamos a requisição `POST`, passando o JSON no corpo da requisição.
 4. Exibimos o status da resposta, que indica se a operação foi bem-sucedida.
@@ -150,7 +150,7 @@ System.out.println(deleteResponse.statusCode());
 A requisição `PUT` é utilizada para atualizar os dados de um recurso existente.
 
 ```java
-Personage updatedCharacter = new Personage("Rick", "Alive", "Human", "Scientist");
+CharacterDto updatedCharacter = new CharacterDto("Rick", "Alive", "Human", "Scientist");
 String jsonUpdate = mapper.writeValueAsString(updatedCharacter);
 
 HttpRequest putRequest = HttpRequest.newBuilder()
@@ -162,7 +162,7 @@ System.out.println(putResponse.statusCode());
 ```
 
 **Explicação:**
-1. Criamos o objeto `Personage` atualizado.
+1. Criamos o objeto `CharacterDto` atualizado.
 2. Serializamos o objeto para JSON.
 3. Construímos e enviamos a requisição `PUT`, passando o JSON atualizado no corpo da requisição.
 4. Exibimos o status da resposta.
