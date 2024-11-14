@@ -13,6 +13,7 @@ public class ExemploGet {
     public static void main(String[] args) {
         // Requisição GET
         try (HttpClient client = HttpClient.newHttpClient()) {
+
             // Cria um objeto para transformar JSON em objeto Java ou vice-versa
             ObjectMapper mapper = new ObjectMapper();
 

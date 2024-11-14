@@ -9,7 +9,7 @@ public class CharacterDto {
     private String species;
     private String type;
     private String gender;
-    private OriginDto originDto;
+    private OriginDto origin;
     private LocationDto location;
     private String image;
     private List<String> episode;
@@ -76,11 +76,11 @@ public class CharacterDto {
     }
 
     public OriginDto getOrigin() {
-        return originDto;
+        return origin;
     }
 
     public void setOrigin(OriginDto originDto) {
-        this.originDto = originDto;
+        this.origin = originDto;
     }
 
     public LocationDto getLocation() {
@@ -132,7 +132,7 @@ public class CharacterDto {
                 ", species='" + species + '\'' +
                 ", type='" + type + '\'' +
                 ", gender='" + gender + '\'' +
-                ", origin=" + originDto +
+                ", origin=" + origin +
                 ", location=" + location +
                 ", image='" + image + '\'' +
                 ", episode=" + episode +
