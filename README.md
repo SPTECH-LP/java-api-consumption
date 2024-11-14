@@ -14,15 +14,12 @@ Neste tutorial, vamos aprender a realizar requisições HTTP (`GET`, `POST`, `PU
 
 ## Passo a Passo
 
-### 1. Estrutura do Projeto
-O código está estruturado em um pacote chamado `school.sptech`. A classe principal `Main` contém a lógica de requisições HTTP e de serialização/desserialização JSON.
-
-### 2. Importando Dependências
+### 1. Importando Dependências
 No código, importamos:
 - **HttpClient** e **HttpRequest** para realizar as requisições HTTP.
 - **ObjectMapper** da biblioteca Jackson para manipulação de JSON.
 
-### 3. Criando a Classe `CharacterDto`
+### 2. Criando a Classe `CharacterDto`
 Para representar os dados dos personagens da API, criamos uma classe `CharacterDto` com os atributos correspondentes. Esta classe precisa ser compatível com o JSON que a API retorna.
 
 * Nota: Sempre deixe um construtor vazio e os getters e setters para que o Jackson consiga desserializar o JSON corretamente.
@@ -37,7 +34,7 @@ public class CharacterDto {
     private String species;
     private String type;
     private String gender;
-    private OriginDto originDto;
+    private OriginDto origin;
     private Location location;
     private String image;
     private List<String> episode;
@@ -57,7 +54,7 @@ A classe CharacterDto foi construida dessa forma porque ela deve ser uma represe
   "species": "",
   "type": "",
   "gender":"",
-  "originDto": {
+  "origin": {
     "name": "",
     "url": ""
   },
@@ -73,10 +70,10 @@ A classe CharacterDto foi construida dessa forma porque ela deve ser uma represe
   
  ```
 
-Perceba que os atributos `originDto` e `location` são objetos JSON aninhados. Para representá-los, criamos as classes `Origin` e `Location`:
+Perceba que os atributos `origin` e `location` são objetos JSON aninhados. Para representá-los, criamos as classes `Origin` e `Location`:
 
 
-### 4. Classes de exemplo 
+### 3. Classes de exemplo 
 Foram criadas classes de exemplo para realizar as operações HTTP: `GET`, `POST`, `DELETE` e `PUT`. Cada uma será explicada abaixo:
 
 **Observação**: Com a API que estamos usando, só é possível realizar a operação de `GET`, de qualquer forma, foram deixados exemplos de `POST`, `DELETE` e `PUT` para que você possa entender como realizar essas operações.
@@ -167,7 +164,7 @@ System.out.println(putResponse.statusCode());
 3. Construímos e enviamos a requisição `PUT`, passando o JSON atualizado no corpo da requisição.
 4. Exibimos o status da resposta.
 
-### 5. Tratamento de Exceções
+### 4. Tratamento de Exceções
 As operações HTTP e de serialização JSON podem gerar exceções (`IOException`, `InterruptedException`). Neste exemplo, elas são tratadas em um bloco `try-catch`.
 
 ## Segue abaixo os links da documentação do Jackson e do HttpClient:
