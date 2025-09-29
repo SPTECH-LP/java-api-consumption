@@ -3,6 +3,7 @@ package school.sptech.dto;
 import java.util.List;
 
 public class CharacterDto {
+
     private Integer id;
     private String name;
     private String status;
@@ -126,18 +127,18 @@ public class CharacterDto {
     @Override
     public String toString() {
         return "Personage{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", status='" + status + '\'' +
-                ", species='" + species + '\'' +
-                ", type='" + type + '\'' +
-                ", gender='" + gender + '\'' +
-                ", origin=" + origin +
-                ", location=" + location +
-                ", image='" + image + '\'' +
-                ", episode=" + episode +
-                ", url='" + url + '\'' +
-                ", created='" + created + '\'' +
-                '}';
+              "id=" + id +
+              ", name='" + name + '\'' +
+              ", status='" + status + '\'' +
+              ", species='" + species + '\'' +
+              ", type='" + type + '\'' +
+              ", gender='" + gender + '\'' +
+              ", origin=" + origin +
+              ", location=" + location +
+              ", image='" + image + '\'' +
+              ", episode=" + episode +
+              ", url='" + url + '\'' +
+              ", created='" + created + '\'' +
+              '}';
     }
 }

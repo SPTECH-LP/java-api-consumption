@@ -1,6 +1,7 @@
 package school.sptech.dto;
 
 public class OriginDto {
+
     private String name;
     private String url;
 

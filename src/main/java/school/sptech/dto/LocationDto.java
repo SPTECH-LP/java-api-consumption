@@ -1,6 +1,7 @@
 package school.sptech.dto;
 
 public class LocationDto {
+
     private String name;
     private String url;
 
